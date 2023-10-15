@@ -1,12 +1,16 @@
 <script setup lang="ts">
 import { ref, provide } from "vue"
 import Child from "./Child.vue"
+import type {Ref,InjectionKey} from 'vue'
 
 const visible = ref(true)
 const timer = ref(null)
-const count = ref(0)
+
+const count = ref(0);
+
+// 2. 使用 InjectionKey 为 provide 添加类型
+provide('count', count);
 provide("timer", timer)
-provide("count", count)
 
 function toggle() {
   visible.value = !visible.value

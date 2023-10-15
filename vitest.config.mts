@@ -3,7 +3,7 @@ import viteConfig from './vite.config.mjs'
 
 export default mergeConfig(viteConfig, defineConfig({
   test: {
-    // include: ['test/**/*.test.ts'],
+    include: ['questions/1-hello-word/*.test.ts'],
     environment: 'jsdom',
     deps: {
       // inline: ['@vue', '@vueuse', 'vue-demi'],

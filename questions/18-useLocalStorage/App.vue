@@ -1,6 +1,5 @@
 <script setup lang='ts'>
-
-import { ref } from "vue"
+import { ref, watch } from "vue"
 
 /**
  * Implement the composable function
@@ -8,6 +7,14 @@ import { ref } from "vue"
 */
 function useLocalStorage(key: string, initialValue: any) {
   const value = ref(initialValue)
+
+  if(window.localStorage.getItem(key)){
+    value.value = JSON.parse(window.localStorage.getItem(key) as string)
+  }
+
+  watch(value,()=>{
+    window.localStorage.setItem(key, JSON.stringify(value.value))
+  })
 
   return value
 }

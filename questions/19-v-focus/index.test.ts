@@ -11,6 +11,8 @@ function delay(timeout: number) {
 
 describe("v-focus", () => {
   it("should work", async() => {
+    //指定一个 HTMLElement 或定位到一个 HTML 元素的 CSS 选择器字符串
+    //组件将会被完全挂载到文档中的这个元素
     const wrapper = mount(App, {
       attachTo: document.body,
     })

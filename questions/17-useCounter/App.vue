@@ -1,4 +1,5 @@
 <script setup lang='ts'>
+import { ref } from "vue";
 
 interface UseCounterOptions {
   min?: number
@@ -10,7 +11,35 @@ interface UseCounterOptions {
  * Make sure the function works correctly
 */
 function useCounter(initialValue = 0, options: UseCounterOptions = {}) {
+  const {min, max} =options
+  let count = ref(initialValue)
 
+  function inc() {
+    count.value++
+
+    if(count.value >= max){
+      count.value = max
+    }
+  }
+
+  function dec() {
+    count.value--
+
+    if(count.value <= min){
+      count.value =min
+    }
+  }
+
+  function reset() {
+    count.value = initialValue
+  }
+
+  return{
+    count,
+    inc,
+    dec,
+    reset
+  }
 }
 
 const { count, inc, dec, reset } = useCounter(0, { min: 0, max: 10 })

@@ -1,8 +1,15 @@
-import { defineComponent } from "vue"
+import { defineComponent,h } from "vue"
 
 export default defineComponent({
   name: 'MyButton',
-  render() {
-    return h(/** do someting */)
+  render(context) {
+    return h('button',{
+      disabled:false,
+      onclick: () => context.$emit('custom-click')
+    },
+    {
+      default: () => 'my button',
+    }
+    )
   }
 })
